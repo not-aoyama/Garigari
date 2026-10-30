@@ -6,7 +6,6 @@
 #include <revolution/gx/GXStruct.h>
 #include <revolution/types.h>
 
-
 class MiiFaceRecipe {
 public:
     MiiFaceRecipe(RFLDataSource, int, RFLResolution, u32);
