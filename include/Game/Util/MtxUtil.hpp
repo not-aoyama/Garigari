@@ -40,6 +40,10 @@ namespace MR {
     void extractMtxXYZDir(MtxPtr, TVec3f*, TVec3f*, TVec3f*);
     void extractMtxTrans(MtxPtr, TVec3f*);
     void preScaleMtx(MtxPtr, const TVec3f&);
+    void rotateMtxLocalXDegree(MtxPtr, f32);
+    void rotateMtxLocalYDegree(MtxPtr, f32);
+    void rotateMtxLocalZDegree(MtxPtr, f32);
+    void blendMtx(MtxPtr, MtxPtr, f32, MtxPtr);
 
     template < typename T >
     f32 sqrt(f32);

@@ -364,5 +364,7 @@ namespace MR {
     HitSensor* getBodySensor(LiveActor* pActor);
     void setBodySensorType(LiveActor* pActor, u32 sensorType);
 
+    void getMapPartsObjectNameIfExistShapeID(char*, u32, const JMapInfoIter&);
+
     void initMapPartsClipping(LiveActor*, const JMapInfoIter&, TVec3f*, bool);
 };  // namespace MR
