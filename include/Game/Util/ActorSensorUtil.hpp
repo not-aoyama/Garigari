@@ -126,6 +126,7 @@ namespace MR {
     bool tryGetItem(HitSensor*, HitSensor*);
 
     const TVec3f* getSensorPos(const HitSensor* pSensor);
+    const TVec3f* getSensorPos2(const HitSensor* pSensor);
     const TVec3f* getSensorPos(const LiveActor* pActor, const char* pSensorName);
     const TVec3f* tryGetSensorPos(const HitSensor* pSensor);
     const TVec3f* tryGetSensorPos(const LiveActor* pActor, const char* pSensorName);
