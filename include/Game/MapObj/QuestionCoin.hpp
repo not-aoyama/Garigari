@@ -59,7 +59,7 @@ public:
 
     /// @brief Sets the shadow drop length. Only a fixed set of length values are supported: `-1` for 1000, `1` for 1500, and `2` for 2000.
     /* 0x114 */ s32 mShadowLengthType;
-    
+
     /* 0x118 */ TVec3f mShadowPos;
     /* 0x124 */ f32 mShadowDropLength;
 };

@@ -1,7 +1,8 @@
 #pragma once
 
-#include <revolution/types.h>
 #include <JSystem/JGeometry/TVec.hpp>
+#include <revolution/types.h>
+
 
 class LiveActor;
 

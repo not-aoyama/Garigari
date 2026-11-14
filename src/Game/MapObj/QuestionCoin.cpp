@@ -28,7 +28,7 @@ namespace {
     const f32 sShadowHeightMargin = 300.0f;
     const f32 sShadowRadius = 120.0f;
     const s32 sBindStartBlendFrame = 0;
-};
+};  // namespace
 
 namespace NrvQuestionCoin {
     NEW_NERVE(HostTypeWait, QuestionCoin, Wait);
@@ -38,7 +38,8 @@ namespace NrvQuestionCoin {
 };  // namespace NrvQuestionCoin
 
 QuestionCoin::QuestionCoin(const char* pName)
-    : LiveActor(pName), mBoundActor(), mCameraInfo(), mLaunchSpeed(), mIsWeakGravity(), mCalcShadow(), mPoseType(), mShadowLengthType(), mShadowPos(gZeroVec), mShadowDropLength() {
+    : LiveActor(pName), mBoundActor(), mCameraInfo(), mLaunchSpeed(), mIsWeakGravity(), mCalcShadow(), mPoseType(), mShadowLengthType(),
+      mShadowPos(gZeroVec), mShadowDropLength() {
     mBaseMtx.identity();
     mActorMtx.identity();
     mLaunchQuat.set(0.0f, 0.0f, 0.0f, 1.0f);
@@ -204,7 +205,7 @@ void QuestionCoin::endClipped() {
     MR::emitEffect(this, "Light");
 }
 
-void QuestionCoin::initFromJMapInfoArg(const JMapInfoIter &rIter) {
+void QuestionCoin::initFromJMapInfoArg(const JMapInfoIter& rIter) {
     MR::getJMapInfoArg0NoInit(rIter, &mLaunchSpeed);
     s32 gravityType = -1;
     MR::getJMapInfoArg1NoInit(rIter, &gravityType);
@@ -244,7 +245,8 @@ void QuestionCoin::updateActorMtx() {
     MR::setBaseTRMtx(mBoundActor, mtx);
 }
 
-void QuestionCoin::exeWait() {}
+void QuestionCoin::exeWait() {
+}
 
 void QuestionCoin::exeThrowActor() {
     if (MR::isFirstStep(this)) {
@@ -292,4 +294,5 @@ void QuestionCoin::exeCaught() {
     }
 }
 
-void QuestionCoin::exeKilled() {}
+void QuestionCoin::exeKilled() {
+}
