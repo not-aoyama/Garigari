@@ -37,19 +37,15 @@ RestartObj::RestartObj(const char* pName) : LiveActor(pName), mMapIdInfo(), mCon
 }
 
 void RestartObj::init(const JMapInfoIter& rIter) {
-    // FIXME
-    // decomp.me: https://decomp.me/scratch/he2X0
-    // I think JMapIdInfo::operator== is being inlined, even though it shouldn't be.
-
     MR::initActor(this, rIter, "RestartObj", false);
-    s32 arg0_SpawnPointID = -1;
-    MR::getJMapInfoArg0NoInit(rIter, &arg0_SpawnPointID);
-    mMapIdInfo = new JMapIdInfo(arg0_SpawnPointID, rIter);
+    s32 arg0 = -1;
+    MR::getJMapInfoArg0NoInit(rIter, &arg0);
+    mMapIdInfo = new JMapIdInfo(arg0, rIter);
     mConnector = new MapObjConnector(this);
     mYoshiTarget = MR::createYoshiLockOnTarget(this, MR::getJointMtx(this, "Pole3"), TVec3f(0.0f));
-    changeTexture(mMapIdInfo == MR::getRestartMarioNo());
+    changeTexture(*mMapIdInfo == *MR::getRestartMarioNo());
 
-    if (mMapIdInfo == MR::getRestartMarioNo() && !GameSequenceFunction::isPadMode2()) {
+    if (*mMapIdInfo == *MR::getRestartMarioNo() && !GameSequenceFunction::isPadMode2()) {
         initNerve(GET_NERVE(RestartObj, RestartObjNrvAfter));
     } else {
         initNerve(GET_NERVE(RestartObj, RestartObjNrvBefore));
