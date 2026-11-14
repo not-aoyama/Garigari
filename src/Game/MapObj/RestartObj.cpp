@@ -81,6 +81,12 @@ void RestartObj::exeGet() {
     }
 }
 
+void RestartObj::exeAfter() {
+    if (MR::isFirstStep(this)) {
+        MR::tryStartActionNotPlaying(this, "After");
+    }
+}
+
 void RestartObj::exeShake() {
     if (MR::isFirstStep(this)) {
         MR::startAction(this, "Shake");
@@ -117,9 +123,9 @@ void RestartObj::calcAndSetBaseMtx() {
 void RestartObj::updateHitSensor(HitSensor* pSensor) {
     TVec3f up(0.0f, 1.0f, 0.0f);
     MR::calcUpVec(&up, this);
-    TVec3f var_8(0.0f, 0.0f, 0.0f);
-    var_8.scaleAdd(400.0f, up, mPosition);
-    MR::calcPerpendicFootToLineInside((TVec3f*)MR::getSensorPos2(pSensor), *MR::getPlayerPos(), mPosition, var_8);
+    TVec3f above(0.0f, 0.0f, 0.0f);
+    above.scaleAdd(400.0f, up, mPosition);
+    MR::calcPerpendicFootToLineInside((TVec3f*)MR::getSensorPos2(pSensor), *MR::getPlayerPos(), mPosition, above);
 }
 
 void RestartObj::attackSensor(HitSensor* pSender, HitSensor* pReceiver) {
@@ -201,10 +207,4 @@ void RestartObj::changeTexture(bool useActivatedTexture) {
     }
 
     MR::startBtpAndSetFrameAndStop(this, "Change", frame);
-}
-
-void RestartObj::exeAfter() {
-    if (MR::isFirstStep(this)) {
-        MR::tryStartActionNotPlaying(this, "After");
-    }
 }
